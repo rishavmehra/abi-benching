@@ -1,0 +1,35 @@
+Static assembly walk for input [0,1,0,1,1,1,0]; not a VM register trace.
+Mollusk independently checks the result and CU.
+
+ 1. pc=  0 mov64 r6, 0xc
+ 2. pc=  1 ldxdw r2, [r1+0x8]
+ 3. pc=  2 jeq r2, 0x0, jmp_02d0
+ 4. pc=  3 ldxb r6, [r1+0x10]
+ 5. pc=  4 jsgt32 r6, 0xb, jmp_0060
+ 6. pc=  5 jsgt32 r6, 0x6, jmp_0098
+ 7. pc=  6 jeq32 r6, 0x0, jmp_0198
+ 8. pc= 51 lddw r7, 0xc00000000
+ 9. pc= 53 jslt r2, 0x7, jmp_0108
+10. pc= 54 ldxb r2, [r1+0x11]
+11. pc= 55 jgt32 r2, 0x1, jmp_0108
+12. pc= 56 lddw r7, 0x600000000
+13. pc= 58 ldxb r2, [r1+0x12]
+14. pc= 59 jne32 r2, 0x0, jmp_0108
+15. pc= 60 mov64 r7, 0x0
+16. pc= 61 ldxb r2, [r1+0x13]
+17. pc= 62 jne32 r2, 0x1, jmp_0108
+18. pc= 63 mov64 r7, 0x6
+19. pc= 64 ldxb r2, [r1+0x14]
+20. pc= 65 jne32 r2, 0x1, jmp_0108
+21. pc= 66 mov64 r7, 0x3
+22. pc= 67 ldxb r2, [r1+0x15]
+23. pc= 68 jne32 r2, 0x1, jmp_0108
+24. pc= 69 ldxb r1, [r1+0x16]
+25. pc= 70 lddw r7, 0xffffffff
+26. pc= 72 jeq32 r1, 0x0, jmp_00f8
+27. pc= 31 mov64 r6, 0x0
+28. pc= 32 jeq32 r7, -0x1, jmp_02d0
+29. pc= 90 mov64 r0, r6
+30. pc= 91 exit
+
+Executed instructions: 30

@@ -1,0 +1,19 @@
+   Compiling program-result-abi-minimal v0.1.0 (/home/ubuntu/sbpf-examples/ptoken-research-v2/cases/rust-bpf-abi-regression/minimal)
+warning: unstable feature specified for `-Ctarget-feature`: `allows-misaligned-mem-access`
+  |
+  = note: this feature is not stably supported; its behavior can change in the future
+
+warning: linker stderr: unable to open LLVM shared lib /home/ubuntu/.rustup/toolchains/nightly-2026-08-19-x86_64-unknown-linux-gnu/lib/libLLVM-23-rust-1.100.0-nightly.so: dlopen failed
+         warning: solana-compiler-builtins was not linked; code generation may fail for operations that require libcalls, and some operations may run less efficiently on the SVM
+         WARN ignoring file /home/ubuntu/sbpf-examples/ptoken-research-v2/cases/rust-bpf-abi-regression/minimal/target/aug19/bpfel-unknown-none/release/build/program-result-abi-minimal/cf33e8c834bf72bf/out/rustch0Xkeb/symbols.o: no embedded bitcode
+         WARN ignoring archive item lib.rmeta: no embedded bitcode
+         WARN ignoring archive item lib.rmeta-link: no embedded bitcode
+         WARN ignoring archive item lib.rmeta: no embedded bitcode
+         WARN ignoring archive item lib.rmeta-link: no embedded bitcode
+  |
+  = note: `#[warn(linker_messages)]` on by default
+
+warning: linker stdout: "/home/ubuntu/sbpf-examples/ptoken-research-v2/cases/rust-bpf-abi-regression/minimal/target/aug19/bpfel-unknown-none/release/build/program-result-abi-minimal/cf33e8c834bf72bf/out/libprogram_result_abi_minimal.so"
+
+warning: `program-result-abi-minimal` (lib) generated 3 warnings
+    Finished `release` profile [optimized] target(s) in 0.95s

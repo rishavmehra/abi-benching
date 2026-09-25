@@ -1,0 +1,19 @@
+{
+  "source_sha256": "2bf1e62d3524404ea199199ca753b04902181e37144ea51e427343aa96352f39",
+  "config_sha256": "a610bc3b2dbe6578cc12cb49cc77e54b5330d1db94cdb586e7695e4327b5db6d",
+  "linker_path": "/home/ubuntu/.cargo/bin/sbpf-linker",
+  "linker_sha256": "22aabf8e2731ac8f2ddb34faca3d540785fb8b9e8ce10b60eeab51503232ec46",
+  "linker_version": "sbpf-linker 0.2.2\nunable to open LLVM shared lib /home/ubuntu/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/libLLVM-23-rust-1.100.0-nightly.so: dlopen failed\nLLVM 23.1.1\n",
+  "builds": {
+    "aug18": {
+      "rustc": "rustc 1.100.0-nightly (8fa1c96cf 2026-08-17)\nbinary: rustc\ncommit-hash: 8fa1c96cfd489e4c27654c144ae871ce2c4db6c6\ncommit-date: 2026-08-17\nhost: x86_64-unknown-linux-gnu\nrelease: 1.100.0-nightly\nLLVM version: 23.1.0\n",
+      "elf_sha256": "0cc6c87facba75e5a9518a1dc0120668e7e92b6579dcc2469ab3f586db9bb814",
+      "success_cu": 26
+    },
+    "aug19": {
+      "rustc": "rustc 1.100.0-nightly (e71c0f1e3 2026-08-18)\nbinary: rustc\ncommit-hash: e71c0f1e3395b10a8c331317be1a5c107bdf7b2e\ncommit-date: 2026-08-18\nhost: x86_64-unknown-linux-gnu\nrelease: 1.100.0-nightly\nLLVM version: 23.1.0\n",
+      "elf_sha256": "dff2e7ae275170c399fe2ac70858b64e1e051a0d045fddd3bb8629efe86ec9da",
+      "success_cu": 30
+    }
+  }
+}

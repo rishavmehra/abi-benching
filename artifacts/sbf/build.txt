@@ -1,0 +1,2 @@
+   Compiling program-result-abi-minimal v0.1.0 (/home/ubuntu/sbpf-examples/ptoken-research-v2/cases/program-result-abi-minimal)
+    Finished `release` profile [optimized] target(s) in 1.04s

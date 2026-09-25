@@ -1,0 +1,4 @@
+/target/
+/artifacts/*/llvm/pre-opt.ll
+
+/target-host/

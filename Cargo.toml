@@ -1,0 +1,21 @@
+[package]
+name = "program-result-abi-minimal"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[workspace]
+
+[lints.rust.unexpected_cfgs]
+level = "warn"
+check-cfg = ['cfg(target_arch, values("sbf"))']
+
+[dev-dependencies]
+mollusk-svm = "=0.15.1"
+solana-bpf-loader-program = "=4.2.2"
+solana-compute-budget = "=4.2.2"
+solana-instruction = "3.0.0"
+solana-pubkey = "4.0.0"
