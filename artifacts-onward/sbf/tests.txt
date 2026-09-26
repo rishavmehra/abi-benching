@@ -1,0 +1,11 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.99s
+     Running tests/test.rs (target-host/debug/build/program-result-abi-minimal/018b91afe39eb288/out/test-018b91afe39eb288)
+
+running 2 tests
+test program_result_abi_regression ... program_result_abi_regression=30
+ok
+test program_result_semantics ... program_result_semantics: 270 inputs passed
+ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.96s
+

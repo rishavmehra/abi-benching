@@ -117,82 +117,44 @@ fn process_instruction(instruction_data: &[u8]) -> ProgramResult {
     let [discriminator, instruction_data @ ..] = instruction_data else {
         return Err(INVALID_INSTRUCTION);
     };
-
     let result = match *discriminator {
-        0 => success_path(instruction_data),
-        1 => error::<1>(),
-        3 => error::<3>(),
-        7 => error::<7>(),
-        8 => error::<8>(),
-        9 => error::<9>(),
-        12 => error::<12>(),
-        15 => error::<15>(),
-        17 => error::<17>(),
-        18 => error::<18>(),
-        20 => error::<20>(),
-        22 => error::<22>(),
-        discriminator => remaining_instruction(discriminator),
+        0 => {
+            let [option, initialized, rent_exempt, owner, writable, signer, _remaining @ ..] = instruction_data else {
+                return Err(INVALID_INSTRUCTION);
+            };
+            if !matches!(*option, 0 | 1) {
+                Err(INVALID_INSTRUCTION)
+            } else if *initialized != 0 {
+                Err(ProgramError::Custom(6))
+            } else if *rent_exempt != 1 {
+                Err(ProgramError::Custom(0))
+            } else if *owner != 1 {
+                Err(ProgramError::IncorrectProgramId)
+            } else if *writable != 1 {
+                Err(ProgramError::InvalidAccountData)
+            } else if *signer != 0 {
+                Err(ProgramError::MissingRequiredSignature)
+            } else {
+                Ok(())
+            }
+        }
+        discriminator => instruction_error(discriminator),
     };
-
     result.inspect_err(log_error)
 }
 
-#[inline(always)]
-fn success_path(data: &[u8]) -> ProgramResult {
-    let [option, initialized, rent_exempt, owner, writable, signer, _remaining @ ..] = data else {
-        return Err(INVALID_INSTRUCTION);
-    };
-
-    match *option {
-        0 | 1 => {}
-        _ => return Err(INVALID_INSTRUCTION),
-    }
-    if *initialized != 0 {
-        return Err(ProgramError::Custom(6));
-    }
-    if *rent_exempt != 1 {
-        return Err(ProgramError::Custom(0));
-    }
-    if *owner != 1 {
-        return Err(ProgramError::IncorrectProgramId);
-    }
-    if *writable != 1 {
-        return Err(ProgramError::InvalidAccountData);
-    }
-    if *signer != 0 {
-        return Err(ProgramError::MissingRequiredSignature);
-    }
-
-    Ok(())
-}
-
 #[inline(never)]
-fn error<const CODE: u8>() -> ProgramResult {
-    Err(ProgramError::Custom(CODE as u32))
-}
-
-#[inline(never)]
-fn remaining_instruction(discriminator: u8) -> ProgramResult {
+fn instruction_error(discriminator: u8) -> ProgramResult {
     match discriminator {
-        2 => error::<2>(),
-        4 => error::<4>(),
-        5 => error::<5>(),
-        6 => error::<6>(),
-        10 => error::<10>(),
-        11 => error::<11>(),
-        13 => error::<13>(),
-        14 => error::<14>(),
-        16 => error::<16>(),
-        19 => error::<19>(),
-        21 => error::<21>(),
-        23 => error::<23>(),
-        24 => error::<24>(),
-        25 => error::<25>(),
+        1..=25 => Err(ProgramError::Custom(discriminator as u32)),
         _ => Err(INVALID_INSTRUCTION),
     }
 }
 
-#[cold]
+fn error<const CODE: u8>() -> ProgramResult {
+    Err(ProgramError::Custom(CODE as u32))
+}
+
 fn log_error(_error: &ProgramError) {
     #[cfg(any(target_arch = "bpf", target_arch = "sbf"))]
     unsafe {

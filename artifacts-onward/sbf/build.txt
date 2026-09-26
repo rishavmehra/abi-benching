@@ -1,0 +1,11 @@
+   Compiling program-result-abi-minimal v0.1.0 (/home/ubuntu/sbpf-examples/ptoken-research-v2/cases/program-result-abi-minimal)
+warning: function `error` is never used
+   --> src/lib.rs:154:4
+    |
+154 | fn error<const CODE: u8>() -> ProgramResult {
+    |    ^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `program-result-abi-minimal` (lib) generated 1 warning
+    Finished `release` profile [optimized] target(s) in 4.11s
